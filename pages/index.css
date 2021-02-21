@@ -1,0 +1,26 @@
+/* normalize.css */
+@import url('../vendor/normalize.css');
+
+/* Page */
+@import url('../blocks/page/page.css');
+@import url('../blocks/page/__container/page__container.css');
+
+/* Header */
+@import url('../blocks/header/header.css');
+@import url('../blocks/header/__image/header__image.css');
+@import url('../blocks/header/__line/header__line.css');
+
+/* Content */
+@import url('../blocks/content/content.css');
+
+/* Profile */
+@import url('../blocks/profile/profile.css');
+@import url('../blocks/profile/__avatar/profile__avatar.css');
+@import url('../blocks/profile/__info/profile__info.css');
+@import url('../blocks/profile/__add-button/profile__add-button.css');
+
+/* Elements */
+@import url('../blocks/elements/elements.css');
+
+/* Footer */
+@import url('../blocks/footer/footer.css');

@@ -1,0 +1,5 @@
+.header__line {
+  min-width: 100%;
+  min-height: 1px;
+  background-color: #545454;
+}
