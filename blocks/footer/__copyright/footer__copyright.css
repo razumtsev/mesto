@@ -5,3 +5,10 @@
   line-height: 1.22;
   color: #545454;
 }
+
+@media screen and (max-width: 585px) {
+  .footer {
+    font-size: 14px;
+    line-height: 1.36;
+  }
+}

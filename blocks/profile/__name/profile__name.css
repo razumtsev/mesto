@@ -6,3 +6,10 @@
   color: #FFFFFF;
   margin: 0;
 }
+
+@media screen and (max-width: 750px) {
+  .profile__name {
+    font-size: 27px;
+    line-height: 1.22;
+  }
+}

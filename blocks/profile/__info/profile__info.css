@@ -1,8 +1,17 @@
 .profile__info {
-  margin-left: 30px;
+  margin: 0 0 0 30px;
   display: grid;
   grid-template-columns: repeat(2, minmax(min-content, max-content));
   grid-template-rows: repeat(2, minmax(min-content, max-content));
   grid-auto-flow: column;
   gap: 16px 18px;
+}
+
+@media screen and (max-width: 550px) {
+  .profile__info {
+    margin: 26px 0 0 32px;
+    justify-items: center;
+    justify-content: center;
+    min-width: calc(100% - 38px);
+  }
 }

@@ -1,8 +1,16 @@
 .elements {
-  margin-top: 50px;
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 20px 17px;
+  margin: 50px auto 0;
+  max-width: 880px;
+}
+
+@media screen and (max-width: 890px) {
+  .elements {
+    max-width: 581px;
+  }
+}
+
+@media screen and (max-width: 585px) {
+  .elements {
+    max-width: 282px;
+  }
 }
