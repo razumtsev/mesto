@@ -3,13 +3,13 @@
   max-width: 880px;
 }
 
-@media screen and (max-width: 890px) {
+@media screen and (max-width: 900px) {
   .elements {
     max-width: 581px;
   }
 }
 
-@media screen and (max-width: 585px) {
+@media screen and (max-width: 600px) {
   .elements {
     max-width: 282px;
   }
