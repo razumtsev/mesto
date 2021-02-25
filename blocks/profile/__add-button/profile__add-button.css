@@ -5,9 +5,11 @@
   border-radius: 2px;
   box-sizing: border-box;
   background-image: url('./image/plus.svg');
+  background-color: transparent;
   background-repeat: no-repeat;
   background-size: 22px 22px;
   background-position: center;
+  cursor: pointer;
   margin-left: auto;
   transition: opacity 0.2s;
 }

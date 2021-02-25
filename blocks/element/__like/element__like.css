@@ -1,7 +1,11 @@
 .element__like {
   width: 22px;
-  height: 18px;
+  height: 19px;
   background-image: url('../images/like.svg');
+  background-color: transparent;
+  padding: 0;
+  cursor: pointer;
+  border: none;
   transition: opacity 0.2s;
 }
 

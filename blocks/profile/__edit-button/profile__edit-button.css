@@ -4,9 +4,11 @@
   border: 1px solid #fff;
   box-sizing: border-box;
   background-image: url('./image/pen.svg');
+  background-color: transparent;
   background-repeat: no-repeat;
   background-size: 10px 10px;
   background-position: center;
+  cursor: pointer;
   align-self: end;
   margin-bottom: 8px;
   transition: opacity 0.2s;
