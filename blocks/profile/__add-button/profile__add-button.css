@@ -14,6 +14,10 @@
   transition: opacity 0.2s;
 }
 
+.profile__add-button:focus {
+  outline: none;
+}
+
 .profile__add-button:hover {
   opacity: 0.6;
 }
