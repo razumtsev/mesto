@@ -1,4 +1,4 @@
-.profile__feature {
+.profile__occupation {
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
@@ -6,10 +6,15 @@
   color: #FFFFFF;
   margin: 0;
   padding: 0;
+  max-width: 295px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 750px) {
-  .profile__feature {
+  .profile__occupation {
+    max-width: 190px;
     font-size: 14px;
   }
 }

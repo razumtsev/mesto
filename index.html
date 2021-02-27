@@ -14,12 +14,12 @@
 
   <div class="page__container">
 
-    <div class="overlay">
-      <div class="popup popup__edit-profile">
+    <div class="popup">
+      <div class="popup__container">
         <p class="popup__name">Редактировать профиль</p>
-        <input class="popup__input popup__input_name" type="text">
+        <input class="popup__input popup__input_name" type="text" value="">
         <div class="popup__line"></div>
-        <input class="popup__input popup__input_occupation" type="text">
+        <input class="popup__input popup__input_occupation" type="text" value="">
         <div class="popup__line"></div>
         <button class="popup__save-button">Сохранить</button>
         <button class="popup__close-button"></button>
@@ -37,7 +37,7 @@
         <div class="profile__avatar"></div>
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <p class="profile__feature">Исследователь океана</p>
+          <p class="profile__occupation">Исследователь океана</p>
           <button class="profile__edit-button"></button>
         </div>
         <button class="profile__add-button"></button>
@@ -98,6 +98,7 @@
 
   </div>
 
+<script src="./scripts/script.js"></script>
 </body>
 
 </html>
