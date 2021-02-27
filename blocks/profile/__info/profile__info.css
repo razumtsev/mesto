@@ -15,9 +15,10 @@
 
 @media screen and (max-width: 550px) {
   .profile__info {
-    margin: 26px 0 0 32px;
+    margin: 26px 0 0 27px;
     justify-items: center;
     justify-content: center;
     min-width: calc(100% - 38px);
+    gap: 8px 10px;
   }
 }
