@@ -14,21 +14,8 @@
 
   <div class="page__container">
 
-    <div class="popup">
-      <div class="popup__container">
-        <p class="popup__name">Редактировать профиль</p>
-        <input class="popup__input popup__input_name" type="text" value="">
-        <div class="popup__line"></div>
-        <input class="popup__input popup__input_occupation" type="text" value="">
-        <div class="popup__line"></div>
-        <button class="popup__save-button">Сохранить</button>
-        <button class="popup__close-button"></button>
-      </div>
-    </div>
-
     <header class="header">
       <img src="./blocks/header/__image/logo.svg" class="header__image" alt="Логотип сайта.">
-      <div class="header__line"></div>
     </header>
     
     <main class="content">
@@ -38,9 +25,9 @@
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <p class="profile__occupation">Исследователь океана</p>
-          <button class="profile__edit-button"></button>
+          <button class="profile__edit-button" type="button"></button>
         </div>
-        <button class="profile__add-button"></button>
+        <button class="profile__add-button" type="button"></button>
       </section>
 
       <section class="elements">
@@ -49,42 +36,42 @@
             <img class="element__photo" src="./blocks/element/images/tower-and-factory.jpg" alt="Преземистая крепостная башня, закрывающая водный путь в город.">
             <div class="element__content">
               <h2 class="element__title">Плоская башня</h2>
-              <button class="element__like-button"></button>
+              <button class="element__like-button" type="button"></button>
             </div>
           </li>
           <li class="element">
             <img class="element__photo" src="./blocks/element/images/cathedral.jpg" alt="Улица ведет к собору с золотым куполом, устремленным в небо.">
             <div class="element__content">
               <h2 class="element__title">Троицкий собор</h2>
-              <button class="element__like-button"></button>
+              <button class="element__like-button" type="button"></button>
             </div>
           </li>
           <li class="element">
             <img class="element__photo" src="./blocks/element/images/bell-tower.jpg" alt="Изящная колокольня собора за высокой крепостной стеной.">
             <div class="element__content">
               <h2 class="element__title">Колокольня собора</h2>
-              <button class="element__like-button"></button>
+              <button class="element__like-button" type="button"></button>
             </div>
           </li>
           <li class="element">
             <img class="element__photo" src="./blocks/element/images/moon.jpg" alt="Луна крупным планом, застигнутая средь бела дня.">
             <div class="element__content">
               <h2 class="element__title">Псковская луна</h2>
-              <button class="element__like-button"></button>
+              <button class="element__like-button" type="button"></button>
             </div>
           </li>
           <li class="element">
             <img class="element__photo" src="./blocks/element/images/crossroads.jpg" alt="Развилка - две стрелки, три пути.">
             <div class="element__content">
               <h2 class="element__title">Распутье</h2>
-              <button class="element__like-button"></button>
+              <button class="element__like-button" type="button"></button>
             </div>
           </li>
           <li class="element">
             <img class="element__photo" src="./blocks/element/images/stump.jpg" alt="Треугольный пень в лесу.">
             <div class="element__content">
               <h2 class="element__title">Земная ось</h2>
-              <button class="element__like-button"></button>
+              <button class="element__like-button" type="button"></button>
             </div>
           </li>
         </ul>
@@ -95,6 +82,16 @@
     <footer class="footer">
       <a class="footer__copyright" href="#" target="_self">&copy; 2021 Mesto Russia</a>
     </footer>
+
+    <div class="popup">
+      <form class="popup__container" name="profile">
+        <h2 class="popup__name">Редактировать профиль</h2>
+        <input class="popup__input popup__input_type_name" type="text" name="nickname" value="" placeholder="Имя" required>
+        <input class="popup__input popup__input_type_occupation" type="text" name="occupation" placeholder="Род занятий" value="" required>
+        <button class="popup__save-button" type="submit">Сохранить</button>
+        <button class="popup__close-button" type="button"></button>
+      </form>
+    </div>
 
   </div>
 
