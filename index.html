@@ -15,7 +15,7 @@
   <div class="page__container">
 
     <header class="header">
-      <img src="./blocks/header/__image/logo.svg" class="header__image" alt="Логотип сайта.">
+      <a href="#" target="_self"><img class="header__logo" src="./blocks/header/__logo/logo.svg" alt="Логотип сайта."></a>
     </header>
     
     <main class="content">
@@ -25,53 +25,53 @@
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <p class="profile__occupation">Исследователь океана</p>
-          <button class="profile__edit-button" type="button" aria-label="edit profile data"></button>
+          <button class="button button_type_edit-profile" type="button" aria-label="редактировать данные профиля"></button>
         </div>
-        <button class="profile__add-button" type="button" aria-label="add"></button>
+        <button class="button button_type_add-card" type="button" aria-label="добавить карточку"></button>
       </section>
 
-      <section class="elements">
-        <ul class="elements__content">
-          <li class="element">
-            <img class="element__photo" src="./blocks/element/images/tower-and-factory.jpg" alt="Преземистая крепостная башня, закрывающая водный путь в город.">
-            <div class="element__content">
-              <h2 class="element__title">Плоская башня</h2>
-              <button class="element__like-button" type="button" aria-label="set like"></button>
+      <section class="cards">
+        <ul class="cards__content">
+          <li class="card">
+            <img class="card__photo" src="./blocks/card/images/tower-and-factory.jpg" alt="Преземистая крепостная башня, закрывающая водный путь в город.">
+            <div class="card__content">
+              <h2 class="card__title">Плоская башня</h2>
+              <button class="button button_type_like" type="button" aria-label="поставить лайк"></button>
             </div>
           </li>
-          <li class="element">
-            <img class="element__photo" src="./blocks/element/images/cathedral.jpg" alt="Улица ведет к собору с золотым куполом, устремленным в небо.">
-            <div class="element__content">
-              <h2 class="element__title">Троицкий собор</h2>
-              <button class="element__like-button" type="button" aria-label="set like"></button>
+          <li class="card">
+            <img class="card__photo" src="./blocks/card/images/cathedral.jpg" alt="Улица ведет к собору с золотым куполом, устремленным в небо.">
+            <div class="card__content">
+              <h2 class="card__title">Троицкий собор</h2>
+              <button class="button button_type_like" type="button" aria-label="поставить лайк"></button>
             </div>
           </li>
-          <li class="element">
-            <img class="element__photo" src="./blocks/element/images/bell-tower.jpg" alt="Изящная колокольня собора за высокой крепостной стеной.">
-            <div class="element__content">
-              <h2 class="element__title">Колокольня собора</h2>
-              <button class="element__like-button" type="button" aria-label="set like"></button>
+          <li class="card">
+            <img class="card__photo" src="./blocks/card/images/bell-tower.jpg" alt="Изящная колокольня собора за высокой крепостной стеной.">
+            <div class="card__content">
+              <h2 class="card__title">Колокольня собора</h2>
+              <button class="button button_type_like" type="button" aria-label="поставить лайк"></button>
             </div>
           </li>
-          <li class="element">
-            <img class="element__photo" src="./blocks/element/images/moon.jpg" alt="Луна крупным планом, застигнутая средь бела дня.">
-            <div class="element__content">
-              <h2 class="element__title">Псковская луна</h2>
-              <button class="element__like-button" type="button" aria-label="set like"></button>
+          <li class="card">
+            <img class="card__photo" src="./blocks/card/images/moon.jpg" alt="Луна крупным планом, застигнутая средь бела дня.">
+            <div class="card__content">
+              <h2 class="card__title">Псковская луна</h2>
+              <button class="button button_type_like" type="button" aria-label="поставить лайк"></button>
             </div>
           </li>
-          <li class="element">
-            <img class="element__photo" src="./blocks/element/images/crossroads.jpg" alt="Развилка - две стрелки, три пути.">
-            <div class="element__content">
-              <h2 class="element__title">Распутье</h2>
-              <button class="element__like-button" type="button" aria-label="set like"></button>
+          <li class="card">
+            <img class="card__photo" src="./blocks/card/images/crossroads.jpg" alt="Развилка - две стрелки, три пути.">
+            <div class="card__content">
+              <h2 class="card__title">Распутье</h2>
+              <button class="button button_type_like" type="button" aria-label="поставить лайк"></button>
             </div>
           </li>
-          <li class="element">
-            <img class="element__photo" src="./blocks/element/images/stump.jpg" alt="Треугольный пень в лесу.">
-            <div class="element__content">
-              <h2 class="element__title">Земная ось</h2>
-              <button class="element__like-button" type="button" aria-label="set like"></button>
+          <li class="card">
+            <img class="card__photo" src="./blocks/card/images/stump.jpg" alt="Треугольный пень в лесу.">
+            <div class="card__content">
+              <h2 class="card__title">Земная ось</h2>
+              <button class="button button_type_like" type="button" aria-label="поставить лайк"></button>
             </div>
           </li>
         </ul>
@@ -80,18 +80,18 @@
     </main>
 
     <footer class="footer">
-      <a class="footer__copyright" href="#" target="_self">&copy; 2021 Mesto Russia</a>
+      <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
     </footer>
 
-    <div class="popup">
+    <article class="popup">
       <form class="popup__container" name="profile">
         <h2 class="popup__name">Редактировать профиль</h2>
         <input class="popup__input popup__input_type_name" type="text" name="nickname" value="" placeholder="Имя" required>
         <input class="popup__input popup__input_type_occupation" type="text" name="occupation" placeholder="Род занятий" value="" required>
-        <button class="popup__save-button" type="submit" aria-label="save data">Сохранить</button>
-        <button class="popup__close-button" type="button" aria-label="close the popup"></button>
+        <button class="button button_type_save" type="submit" aria-label="сохранить данные">Сохранить</button>
+        <button class="button button_type_close" type="button" aria-label="закрыть всплывающее окно"></button>
       </form>
-    </div>
+    </article>
 
   </div>
 

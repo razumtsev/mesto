@@ -4,12 +4,8 @@
   font-size: 18px;
   line-height: 1.22;
   color: #545454;
-  text-decoration: none;
-  transition: opacity 0.2s;
-}
-
-.footer__copyright:hover {
-  opacity: 0.8;
+  margin: 0;
+  padding: 0;
 }
 
 @media screen and (max-width: 585px) {

@@ -1,10 +1,10 @@
-.elements {
+.cards {
   margin: 50px auto 0;
   max-width: 880px;
 }
 
-@media screen and (max-width: 600px) {
-  .elements {
+@media screen and (max-width: 580px) {
+  .cards {
     margin: 36px auto 0;
   }
 }

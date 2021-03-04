@@ -1,0 +1,17 @@
+.button_type_edit-profile {
+  width: 24px;
+  height: 24px;
+  border: 1px solid #fff;
+  background-image: url('../images/pen.svg');
+  background-size: 10px 10px;
+  align-self: end;
+  margin-bottom: 8px;
+}
+
+@media screen and (max-width: 750px) {
+  .button_type_edit-profile {
+    width: 18px;
+    height: 18px;
+    margin-bottom: 6px;
+  }
+}

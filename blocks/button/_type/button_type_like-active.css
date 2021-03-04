@@ -1,0 +1,7 @@
+.button_type_like-active {
+  width: 22px;
+  height: 19px;
+  background-image: url('../images/heart-dark.svg');
+  padding: 0;
+  border: none;
+}
