@@ -3,12 +3,6 @@
   max-width: 880px;
 }
 
-@media screen and (max-width: 900px) {
-  .elements {
-    max-width: 581px;
-  }
-}
-
 @media screen and (max-width: 600px) {
   .elements {
     margin: 36px auto 0;
