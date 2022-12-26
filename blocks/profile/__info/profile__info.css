@@ -3,7 +3,7 @@
   align-content: center;
   align-items: baseline;
   grid-template-columns: minmax(200px, min-content) 1fr;
-  gap: 16px 18px;
+  gap: 7px 19px;
 }
 
 @media screen and (max-width: 650px) {
