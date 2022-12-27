@@ -7,11 +7,15 @@
     <title>Место Россия</title>
     <link rel="stylesheet" href="./pages/index.css">
   </head>
+
   <body class="root">
+
     <div class="page">
+
       <header class="header">
         <img class="header__logo" src="./images/mesto-russia.svg" alt="логотип сайта Место Россия">
       </header>
+
       <main class="content">
 
         <section class="profile">
@@ -28,42 +32,42 @@
           <ul class="list elements__grid">
             <li>
               <figure class="card">
-                <img class="card__image" src="./images/grid-karachaevsk.jpg" alt="">
+                <img class="card__image" src="./images/grid-karachaevsk.jpg" alt="Карачаевск">
                 <figcaption class="card__caption overflow-ellipsis">Карачаевск</figcaption>
                 <button class="link button card__like" type="button"></button>
               </figure>
             </li>
             <li>
               <figure class="card">
-                <img class="card__image" src="./images/grid-elbrus.jpg" alt="">
+                <img class="card__image" src="./images/grid-elbrus.jpg" alt="Гора Эльбрус">
                 <figcaption class="card__caption overflow-ellipsis">Гора Эльбрус</figcaption>
                 <button class="link button card__like" type="button"></button>
               </figure>
             </li>
             <li>
               <figure class="card">
-                <img class="card__image" src="./images/grid-dombay.jpg" alt="">
+                <img class="card__image" src="./images/grid-dombay.jpg" alt="Домбай">
                 <figcaption class="card__caption overflow-ellipsis">Домбай</figcaption>
                 <button class="link button card__like" type="button"></button>
               </figure>
             </li>
             <li>
               <figure class="card">
-                <img class="card__image" src="./images/grid-elbrus.jpg" alt="">
+                <img class="card__image" src="./images/grid-elbrus.jpg" alt="Гора Эльбрус">
                 <figcaption class="card__caption overflow-ellipsis">Гора Эльбрус</figcaption>
                 <button class="link button card__like" type="button"></button>
               </figure>
             </li>
             <li>
               <figure class="card">
-                <img class="card__image" src="./images/grid-dombay.jpg" alt="">
+                <img class="card__image" src="./images/grid-dombay.jpg" alt="Домбай">
                 <figcaption class="card__caption overflow-ellipsis">Домбай</figcaption>
                 <button class="link button card__like" type="button"></button>
               </figure>
             </li>
             <li>
               <figure class="card">
-                <img class="card__image" src="./images/grid-karachaevsk.jpg" alt="">
+                <img class="card__image" src="./images/grid-karachaevsk.jpg" alt="Карачаево-Черкесия">
                 <figcaption class="card__caption overflow-ellipsis">Карачаево-Черкесия</figcaption>
                 <button class="link button card__like" type="button"></button>
               </figure>
@@ -72,9 +76,24 @@
         </section>
 
       </main>
+
       <footer class="footer">
         <p class="footer__copyright">© 2022 Mesto Russia</p>
       </footer>
+
+      <div class="popup">
+        <div class="popup__container">
+          <form class="form form_type_edit-profile" name="edit-profile">
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <input class="popup__input popup__input_type_name" name="profile-name" value="Жак-Ив Кусто" placeholder="Имя пользователя" required>
+            <input class="popup__input popup__input_type_description" name="profile-description" value="Исследователь океана" placeholder="Дополнительная информация" required>
+            <button class="button link popup__submit-button" type="submit">Сохранить</button>
+          </form>
+          <button class="button link button_type_close" type="button"></button>
+        </div>
+      </div>
+
     </div>
+
   </body>
 </html>

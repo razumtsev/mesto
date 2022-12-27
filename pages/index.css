@@ -8,12 +8,17 @@
 @import url(../blocks/button/button.css);
 @import url(../blocks/button/_type/button_type_add-card.css);
 @import url(../blocks/button/_type/button_type_edit-profile.css);
+@import url(../blocks/button/_type/button_type_close.css);
 
 /* -= Link =- */
 @import url(../blocks/link/link.css);
 
 /* -= List =- */
 @import url(../blocks/list/list.css);
+
+/* -= Form =- */
+@import url(../blocks/form/form.css);
+@import url(../blocks/form/_type/form_type_edit-profile.css);
 
 /* -= Overflow-ellipsis =- */
 @import url(../blocks/overflow-ellipsis/overflow-ellipsis.css);
@@ -52,3 +57,11 @@
 /* -= Footer =- */
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
+
+/* -= Popup =- */
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/_is-open/popup_is-open.css);
+@import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__title/popup__title.css);
+@import url(../blocks/popup/__input/popup__input.css);
+@import url(../blocks/popup/__submit-button/popup__submit-button.css);

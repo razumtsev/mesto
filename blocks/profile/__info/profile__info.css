@@ -9,7 +9,7 @@
 @media screen and (max-width: 650px) {
   .profile__info {
     justify-items: center;
-    gap: 14px 10px;
-    margin-bottom: 13.75px;
+    gap: 6px 10px;
+    margin-bottom: 8px;
   }
 }
