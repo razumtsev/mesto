@@ -8,13 +8,13 @@
   gap: 30px;
 }
 
-@media screen and (max-width: 934px) {
+@media screen and (max-width: 917px) {
   .profile {
     max-width: calc(100% - (19px * 2));
   }
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 618px) {
   .profile {
     margin-top: 43px;
     grid-template-columns: auto;

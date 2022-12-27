@@ -7,7 +7,7 @@
   justify-self: start;
 }
 
-@media screen and (max-width: 934px) {
+@media screen and (max-width: 917px) {
   .button_type_edit-profile {
     width: 18px;
     height: 18px;

@@ -3,7 +3,7 @@
   margin-top: 51px;
 }
 
-@media screen and (max-width: 934px) {
+@media screen and (max-width: 917px) {
   .elements {
     max-width: calc(100% - (19px * 2));
     margin-top: 36px;
