@@ -16,7 +16,7 @@
 
 @media screen and (max-width: 618px) {
   .profile {
-    margin-top: 43px;
+    margin-top: 42px;
     grid-template-columns: auto;
     justify-items: center;
     gap: 26px;

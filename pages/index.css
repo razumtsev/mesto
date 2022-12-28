@@ -10,9 +10,6 @@
 @import url(../blocks/button/_type/button_type_edit-profile.css);
 @import url(../blocks/button/_type/button_type_close.css);
 
-/* -= Link =- */
-@import url(../blocks/link/link.css);
-
 /* -= List =- */
 @import url(../blocks/list/list.css);
 

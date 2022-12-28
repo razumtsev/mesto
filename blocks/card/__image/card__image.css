@@ -3,5 +3,5 @@
   height: 282px;
   object-fit: cover;
   object-position: center;
-  overflow: hidden;
+  border-radius: 10px 10px 0px 0px;
 }

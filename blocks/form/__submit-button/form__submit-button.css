@@ -11,6 +11,12 @@
   margin-top: 27px;
 }
 
+.form__submit-button:hover {
+  opacity: .8;
+  transition: opacity .2s ease;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 618px) {
   .form__submit-button {
     font-size: 14px;
