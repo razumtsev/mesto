@@ -30,20 +30,23 @@ const addCardAppend = card => elementsGrid.append(card);
 
 const handleLikeClick = evt => evt.target.classList.toggle('card__like_is-active');
 
+const handleRemoveButton = evt => evt.target.closest('.card').remove();
+
 const createCard = item => {
   const card = cardTemplate.querySelector('.card').cloneNode(true);
   const link = card.querySelector('.card__image');
   const name = card.querySelector('.card__caption');
-  const like = card.querySelector('.card__like')
+  const like = card.querySelector('.card__like');
+  const removeButton = card.querySelector('.card__remove');
   link.src = item.link;
   link.alt = item.name;
   name.textContent = item.name;
   like.addEventListener('click', handleLikeClick);
+  removeButton.addEventListener('click', handleRemoveButton);
   return card;
 }
 
 initialCards.forEach(item => addCardAppend(createCard(item)));
-
 
 // закрытие модальных окон
 
