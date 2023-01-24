@@ -30,6 +30,7 @@
 
         <section class="elements">
           <ul class="list elements__grid">
+            <!--
             <li class="card">
               <img class="card__image" src="./images/grid-karachaevsk.jpg" alt="Храм в горах">
               <h2 class="card__caption overflow-ellipsis">Карачаевск</h2>
@@ -60,14 +61,23 @@
               <h2 class="card__caption overflow-ellipsis">Карачаево-Черкесия</h2>
               <button class="button card__like" type="button" aria-label="поставить или удалить лайк"></button>
             </li>
+            -->
           </ul>
         </section>
 
       </main>
 
       <footer class="footer">
-        <p class="footer__copyright">© 2022 Mesto Russia</p>
+        <p class="footer__copyright">© 2022-2023 Mesto Russia</p>
       </footer>
+
+      <template id="card-template">
+        <li class="card">
+          <img class="card__image" src="" alt="">
+          <h2 class="card__caption overflow-ellipsis"></h2>
+          <button class="button card__like" type="button" aria-label="поставить или удалить лайк"></button>
+        </li>
+      </template>
 
       <div class="popup popup_type_edit-profile">
         <div class="popup__container">
@@ -83,6 +93,7 @@
 
     </div>
 
+    <script src="./scripts/initial-cards.js"></script>
     <script src="./scripts/script.js"></script>
   </body>
 </html>
