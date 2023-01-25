@@ -34,8 +34,8 @@ const addCardAppend = card => elementsGrid.append(card);
 
 // закрытие модальных окон
 
-const closePopup = () => popupList.forEach(item => item.classList.remove('popup_is-open'));
-
+//const closePopup = () => popupList.forEach(item => item.classList.remove('popup_is-open'));
+closePopup = evt => evt.target.closest('.popup').classList.remove('popup_is-open');
 buttonClosePopupList.forEach(button => button.addEventListener('click', closePopup));
 
 // открытие модальных окон
