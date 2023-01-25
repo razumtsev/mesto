@@ -84,7 +84,7 @@ const handleEditProfileSubmit = evt => {
   evt.preventDefault();
   profileName.textContent = inputName.value;
   profileDescription.textContent = inputDescription.value;
-  closePopup();
+  closePopup(evt);
 }
 
 const handleAddCardButton = () => {
@@ -97,7 +97,7 @@ const handleAddCardSubmit = evt => {
   cardEssence.name = inputCardName.value;
   cardEssence.link = inputCardLink.value;
   addCardPrepend(createCard(cardEssence));
-  closePopup();
+  closePopup(evt);
   formAddCard.reset();
 }
 

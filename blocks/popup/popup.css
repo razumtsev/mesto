@@ -5,6 +5,9 @@
   left: 0;
   right: 0;
   bottom: 0;
-  display: none;
   min-width: 320px;
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  transition: all .15s ease;
 }
