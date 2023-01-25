@@ -1,4 +1,4 @@
-// очень-очень глобальные переменные
+// глобальные переменные глобального масштаба
 const page = document.querySelector('.page');
 const profile = page.querySelector('.profile');
 const profileName = profile.querySelector('.profile__name');
@@ -15,6 +15,10 @@ const popupAddCard = page.querySelector('.popup_type_add-card');
 const formAddCard = page.querySelector('.form_type_add-card');
 const inputCardName = formAddCard.querySelector('.form__input_type_card-name');
 const inputCardLink = formAddCard.querySelector('.form__input_type_card-link');
+// глобальные переменные для модального окна увеличенной картинки
+const popupBigPic = page.querySelector('.popup_type_big-pic');
+const bigPicImage = popupBigPic.querySelector('.big-pic__image');
+const bigPicCaption = popupBigPic.querySelector('.big-pic__caption');
 // глобальные переменные для закрытия модальных окон
 const popupList = page.querySelectorAll('.popup');
 const buttonClosePopupList = page.querySelectorAll('.button_type_close');
@@ -23,30 +27,10 @@ const elementsGrid = page.querySelector('.elements__grid');
 const cardTemplate = page.querySelector('#card-template').content;
 
 
-// создание и добавление карточки на страницу
+// добавление карточки на страницу
+
 const addCardPrepend = card => elementsGrid.prepend(card);
-
 const addCardAppend = card => elementsGrid.append(card);
-
-const handleLikeClick = evt => evt.target.classList.toggle('card__like_is-active');
-
-const handleRemoveButton = evt => evt.target.closest('.card').remove();
-
-const createCard = item => {
-  const card = cardTemplate.querySelector('.card').cloneNode(true);
-  const link = card.querySelector('.card__image');
-  const name = card.querySelector('.card__caption');
-  const like = card.querySelector('.card__like');
-  const removeButton = card.querySelector('.card__remove');
-  link.src = item.link;
-  link.alt = item.name;
-  name.textContent = item.name;
-  like.addEventListener('click', handleLikeClick);
-  removeButton.addEventListener('click', handleRemoveButton);
-  return card;
-}
-
-initialCards.forEach(item => addCardAppend(createCard(item)));
 
 // закрытие модальных окон
 
@@ -58,6 +42,34 @@ buttonClosePopupList.forEach(button => button.addEventListener('click', closePop
 
 const openPopup = (popupName) => {
   popupName.classList.add('popup_is-open');
+}
+
+// обработчики кликов карточки
+
+const handleLikeClick = evt => evt.target.classList.toggle('card__like_is-active');
+const handleRemoveClick = evt => evt.target.closest('.card').remove();
+
+const handleImageClick = evt => {
+  bigPicImage.src = evt.target.src;
+  bigPicCaption.textContent = evt.target.alt;
+  openPopup(popupBigPic);
+};
+
+// создание карточки
+
+const createCard = item => {
+  const card = cardTemplate.querySelector('.card').cloneNode(true);
+  const image = card.querySelector('.card__image');
+  const name = card.querySelector('.card__caption');
+  const like = card.querySelector('.card__like');
+  const removeButton = card.querySelector('.card__remove');
+  image.src = item.link;
+  image.alt = item.name;
+  name.textContent = item.name;
+  image.addEventListener('click', handleImageClick);
+  like.addEventListener('click', handleLikeClick);
+  removeButton.addEventListener('click', handleRemoveClick);
+  return card;
 }
 
 // обработчики событий
@@ -95,3 +107,7 @@ buttonEditProfile.addEventListener('click', handleEditProfileButton);
 formEditProfile.addEventListener('submit', handleEditProfileSubmit);
 buttonAddCard.addEventListener('click', handleAddCardButton);
 formAddCard.addEventListener('submit', handleAddCardSubmit);
+
+// карточки для первоначальной загрузки страницы из массива initial-cards.js
+
+initialCards.forEach(item => addCardAppend(createCard(item)));

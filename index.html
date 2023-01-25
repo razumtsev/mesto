@@ -50,7 +50,7 @@
       </template>
 
       <div class="popup popup_type_edit-profile">
-        <div class="popup__container">
+        <div class="popup__container popup__container_type_form">
           <form class="form form_type_edit-profile" name="edit-profile">
             <h2 class="form__title">Редактировать профиль</h2>
             <input class="form__input form__input_type_name" type="text" name="profile-name" value="" placeholder="Имя пользователя" required>
@@ -62,13 +62,23 @@
       </div>
 
       <div class="popup popup_type_add-card">
-        <div class="popup__container">
+        <div class="popup__container popup__container_type_form">
           <form class="form form_type_add-card" name="add-card">
             <h2 class="form__title">Новое место</h2>
             <input class="form__input form__input_type_card-name" type="text" name="card-name" value="" placeholder="Название" required>
             <input class="form__input form__input_type_card-link" type="url" name="card-link" value="" placeholder="Ссылка на картинку" required>
             <button class="button form__submit-button" type="submit">Создать</button>
           </form>
+          <button class="button button_type_close" type="button" aria-label="закрыть модальное окно"></button>
+        </div>
+      </div>
+
+      <div class="popup popup_type_big-pic">
+        <div class="popup__container popup__container_type_image">
+          <figure class="big-pic">
+            <img class="big-pic__image" src="" alt="">
+            <figcaption class="big-pic__caption overflow-ellipsis"></figcaption>
+          </figure>
           <button class="button button_type_close" type="button" aria-label="закрыть модальное окно"></button>
         </div>
       </div>
