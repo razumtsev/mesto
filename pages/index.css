@@ -65,7 +65,11 @@
 @import url(../blocks/form/_type/form_type_edit-profile.css);
 @import url(../blocks/form/__title/form__title.css);
 @import url(../blocks/form/__input/form__input.css);
+@import url(../blocks/form/__input/_type/form__input_type_error.css);
+@import url(../blocks/form/__input-error/form__input-error.css);
+@import url(../blocks/form/__input-error/_is-active/form__input-error_is-active.css);
 @import url(../blocks/form/__submit-button/form__submit-button.css);
+@import url(../blocks/form/__submit-button/_is-inactive/form__submit-button_is-inactive.css);
 
 /* -= Big-pic =- */
 @import url(../blocks/big-pic/big-pic.css);

@@ -44,7 +44,11 @@ buttonClosePopupList.forEach(button => {
 
 // открытие модальных окон
 
-const openPopup = popup => popup.classList.add('popup_is-open');
+const openPopup = popup => {
+  // вызов функции из form-validation.js
+  enableValidation();
+  popup.classList.add('popup_is-open')
+};
 
 // обработчики кликов карточки
 
@@ -86,7 +90,7 @@ const handleEditProfileButton = () => {
 }
 
 const handleEditProfileSubmit = evt => {
-  evt.preventDefault();
+  //evt.preventDefault();
   profileName.textContent = inputName.value;
   profileDescription.textContent = inputDescription.value;
   closePopup(popupEditProfile);
@@ -97,7 +101,7 @@ const handleAddCardButton = () => {
 }
 
 const handleAddCardSubmit = evt => {
-  evt.preventDefault();
+  //evt.preventDefault();
   const cardEssence = {
     name: inputCardName.value,
     link: inputCardLink.value,
