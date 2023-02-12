@@ -33,7 +33,11 @@ const addCardAppend = card => elementsGrid.append(card);
 
 // закрытие модальных окон
 
-const closePopup = popup => popup.classList.remove('popup_is-open');
+//const closePopup = popup => popup.classList.remove('popup_is-open');
+const closePopup = popup => {
+  console.log(popup);
+  popup.classList.remove('popup_is-open')
+}
 
 // назначение каждой кнопке закрытия "своего" модального окна + обработчик клика
 
@@ -42,11 +46,19 @@ buttonClosePopupList.forEach(button => {
   button.addEventListener('click', () => closePopup(popup));
 });
 
+// обработчик клика по оверлею
+
+const handleOverlayClick = (evt) => {
+  if (evt.target.classList.contains('popup')) {
+    closePopup(evt.target);
+  }
+}
+
 // открытие модальных окон
 
 const openPopup = popup => {
-  // вызов функции из form-validation.js
   enableValidation();
+  popup.addEventListener('click', handleOverlayClick);
   popup.classList.add('popup_is-open')
 };
 
