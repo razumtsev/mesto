@@ -33,33 +33,26 @@ const addCardAppend = card => elementsGrid.append(card);
 
 // закрытие модальных окон
 
-//const closePopup = popup => popup.classList.remove('popup_is-open');
-const closePopup = popup => {
-  console.log(popup);
-  popup.classList.remove('popup_is-open')
-}
+const closePopup = popup => popup.classList.remove('popup_is-open');
 
-// назначение каждой кнопке закрытия "своего" модального окна + обработчик клика
+// обработчик клика по кнопке закрытия
 
 buttonClosePopupList.forEach(button => {
-  const popup = button.closest('.popup');
-  button.addEventListener('click', () => closePopup(popup));
+  button.addEventListener('click', () => closePopup(button.closest('.popup')));
 });
 
 // обработчик клика по оверлею
 
-const handleOverlayClick = (evt) => {
-  if (evt.target.classList.contains('popup')) {
-    closePopup(evt.target);
-  }
+const handleOverlayClick = evt => {
+  if (evt.target.classList.contains('popup')) closePopup(evt.target);
 }
 
 // открытие модальных окон
 
 const openPopup = popup => {
-  enableValidation();
+  enableValidation(); //валидация форм в файле form-validation.js
   popup.addEventListener('click', handleOverlayClick);
-  popup.classList.add('popup_is-open')
+  popup.classList.add('popup_is-open');
 };
 
 // обработчики кликов карточки
@@ -101,8 +94,7 @@ const handleEditProfileButton = () => {
   openPopup(popupEditProfile);
 }
 
-const handleEditProfileSubmit = evt => {
-  //evt.preventDefault();
+const handleEditProfileSubmit = () => {
   profileName.textContent = inputName.value;
   profileDescription.textContent = inputDescription.value;
   closePopup(popupEditProfile);
@@ -112,8 +104,7 @@ const handleAddCardButton = () => {
   openPopup(popupAddCard)
 }
 
-const handleAddCardSubmit = evt => {
-  //evt.preventDefault();
+const handleAddCardSubmit = () => {
   const cardEssence = {
     name: inputCardName.value,
     link: inputCardLink.value,
@@ -123,12 +114,17 @@ const handleAddCardSubmit = evt => {
   formAddCard.reset();
 }
 
+const handleEscEvent = evt => {
+  if (evt.key === 'Escape') closePopup(page.querySelector('.popup_is-open'));
+}
+
 // слушатели событий
 
 buttonEditProfile.addEventListener('click', handleEditProfileButton);
 formEditProfile.addEventListener('submit', handleEditProfileSubmit);
 buttonAddCard.addEventListener('click', handleAddCardButton);
 formAddCard.addEventListener('submit', handleAddCardSubmit);
+document.addEventListener('keydown', handleEscEvent);
 
 // карточки для первоначальной загрузки страницы из массива initial-cards.js
 
