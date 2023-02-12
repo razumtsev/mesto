@@ -8,7 +8,7 @@
   background-color: #000;
   border-radius: 2px;
   color: #fff;
-  margin-top: 48px;
+  margin-top: 17px;
 }
 
 .form__submit-button:hover {
@@ -20,6 +20,6 @@
     font-size: 14px;
     line-height: 17px;
     min-height: 46px;
-    margin-top: 46px;
+    margin-top: 14px;
   }
 }
