@@ -26,40 +26,48 @@ const elementsGrid = page.querySelector('.elements__grid');
 const cardSample = page.querySelector('#card-template').content.querySelector('.card');
 
 
-// добавление карточки на страницу
+// -= Добавление карточки на страницу =-
 
 const addCardPrepend = card => elementsGrid.prepend(card);
 const addCardAppend = card => elementsGrid.append(card);
 
-// закрытие модальных окон
+// очистка формы при закрытии
+const resetForm = popup => {
+  if (popup.querySelector('.form')) {
+    const form = popup.querySelector('.form');
+    const inputList = form.querySelectorAll('.form__input');
+    form.reset();
+    inputList.forEach(input => hideInputError(configValidation, form, input));
+  }
+}
 
-const closePopup = popup => popup.classList.remove('popup_is-open');
+// закрытие модальных окон
+const closePopup = popup => {
+  popup.classList.remove('popup_is-open');
+  resetForm(popup);
+};
 
 // обработчик клика по кнопке закрытия
-
 buttonClosePopupList.forEach(button => {
   button.addEventListener('click', () => closePopup(button.closest('.popup')));
 });
 
 // обработчик клика по оверлею
-
 const handleOverlayClick = evt => {
   if (evt.target.classList.contains('popup')) closePopup(evt.target);
 }
 
 // открытие модальных окон
-
 const openPopup = popup => {
-  enableValidation(); //валидация форм в файле form-validation.js
-  popup.addEventListener('click', handleOverlayClick);
+  enableValidation(configValidation);
+  popup.addEventListener('mousedown', handleOverlayClick);
   popup.classList.add('popup_is-open');
 };
 
-// обработчики кликов карточки
+// -= Обработчики кликов карточки =-
 
 const handleLikeClick = evt => evt.target.classList.toggle('card__like_is-active');
 const handleRemoveClick = evt => evt.target.closest('.card').remove();
-
 const handleImageClick = evt => {
   const imageName = evt.target.alt;
   const imageSrc = evt.target.src;
@@ -70,7 +78,6 @@ const handleImageClick = evt => {
 };
 
 // создание карточки
-
 const createCard = item => {
   const card = cardSample.cloneNode(true);
   const image = card.querySelector('.card__image');
@@ -86,7 +93,7 @@ const createCard = item => {
   return card;
 }
 
-// обработчики событий
+// -= Обработчики событий =-
 
 const handleEditProfileButton = () => {
   inputName.value = profileName.textContent;
@@ -111,14 +118,13 @@ const handleAddCardSubmit = () => {
   };
   addCardPrepend(createCard(cardEssence));
   closePopup(popupAddCard);
-  formAddCard.reset();
 }
 
 const handleEscEvent = evt => {
   if (evt.key === 'Escape') closePopup(page.querySelector('.popup_is-open'));
 }
 
-// слушатели событий
+// -= Слушатели событий =-
 
 buttonEditProfile.addEventListener('click', handleEditProfileButton);
 formEditProfile.addEventListener('submit', handleEditProfileSubmit);
@@ -126,6 +132,5 @@ buttonAddCard.addEventListener('click', handleAddCardButton);
 formAddCard.addEventListener('submit', handleAddCardSubmit);
 document.addEventListener('keydown', handleEscEvent);
 
-// карточки для первоначальной загрузки страницы из массива initial-cards.js
-
+// загрузка карточек из массива при старте
 initialCards.forEach(item => addCardAppend(createCard(item)));

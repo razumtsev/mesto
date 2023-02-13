@@ -70,14 +70,10 @@
         <div class="popup__container popup__container_type_form">
           <form class="form form_type_add-card" name="add-card" novalidate>
             <h2 class="form__title">Новое место</h2>
-            <label class="form__field">
-              <input class="form__input form__input_type_card-name" type="text" name="card-name" id="card-name" minlength="2" maxlength="30" placeholder="Название" required>
-              <span class="form__input-error card-name-error"></span>
-            </label>
-            <label class="form__field">
-              <input class="form__input form__input_type_card-link" type="url" name="card-link" id="card-link" placeholder="Ссылка на картинку" required>
-              <span class="form__input-error card-link-error"></span>
-            </label>
+            <input class="form__input form__input_type_card-name" type="text" name="card-name" id="card-name" minlength="2" maxlength="30" placeholder="Название" required>
+            <span class="form__input-error card-name-error"></span>
+            <input class="form__input form__input_type_card-link" type="url" name="card-link" id="card-link" placeholder="Ссылка на картинку" required>
+            <span class="form__input-error card-link-error"></span>
             <button class="button form__submit-button" type="submit">Создать</button>
           </form>
           <button class="button button_type_close" type="button" aria-label="закрыть модальное окно"></button>
