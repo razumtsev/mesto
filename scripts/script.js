@@ -52,9 +52,13 @@ buttonClosePopupList.forEach(button => {
   button.addEventListener('click', () => closePopup(button.closest('.popup')));
 });
 
-// обработчик клика по оверлею
+// обработчик клика по оверлею модального окна
 const handleOverlayClick = evt => {
-  if (evt.target.classList.contains('popup')) closePopup(evt.target);
+  if (evt.target.classList.contains('popup')) {
+    const popup = evt.target;
+    closePopup(popup);
+    popup.removeEventListener('mousedown', handleOverlayClick);
+  }
 }
 
 // открытие модальных окон
