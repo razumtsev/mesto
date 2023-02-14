@@ -31,21 +31,12 @@ const cardSample = page.querySelector('#card-template').content.querySelector('.
 const addCardPrepend = card => elementsGrid.prepend(card);
 const addCardAppend = card => elementsGrid.append(card);
 
-// очистка формы при закрытии
-const resetForm = popup => {
-  if (popup.querySelector('.form')) {
-    const form = popup.querySelector('.form');
-    const inputList = form.querySelectorAll('.form__input');
-    form.reset();
-    inputList.forEach(input => hideInputError(configValidation, form, input));
-  }
-}
-
 // закрытие модальных окон
 const closePopup = popup => {
   popup.classList.remove('popup_is-open');
-  resetForm(popup);
-};
+  popup.removeEventListener('mousedown', handleOverlayClick);
+  document.removeEventListener('keydown', handleEscEvent);
+}
 
 // обработчик клика по кнопке закрытия
 buttonClosePopupList.forEach(button => {
@@ -54,17 +45,19 @@ buttonClosePopupList.forEach(button => {
 
 // обработчик клика по оверлею модального окна
 const handleOverlayClick = evt => {
-  if (evt.target.classList.contains('popup')) {
-    const popup = evt.target;
-    closePopup(popup);
-    popup.removeEventListener('mousedown', handleOverlayClick);
-  }
+  if (evt.target.classList.contains('popup')) closePopup(evt.target);
+}
+
+// обработчик клика по клавише 'Escape'
+const handleEscEvent = evt => {
+  if (evt.key === 'Escape') closePopup(page.querySelector('.popup_is-open'));
 }
 
 // открытие модальных окон
 const openPopup = popup => {
-  enableValidation(configValidation);
+  //enableValidation(configValidation);
   popup.addEventListener('mousedown', handleOverlayClick);
+  document.addEventListener('keydown', handleEscEvent);
   popup.classList.add('popup_is-open');
 };
 
@@ -109,6 +102,7 @@ const handleEditProfileSubmit = () => {
   profileName.textContent = inputName.value;
   profileDescription.textContent = inputDescription.value;
   closePopup(popupEditProfile);
+  formEditProfile.reset();
 }
 
 const handleAddCardButton = () => {
@@ -122,10 +116,7 @@ const handleAddCardSubmit = () => {
   };
   addCardPrepend(createCard(cardEssence));
   closePopup(popupAddCard);
-}
-
-const handleEscEvent = evt => {
-  if (evt.key === 'Escape') closePopup(page.querySelector('.popup_is-open'));
+  formAddCard.reset();
 }
 
 // -= Слушатели событий =-
@@ -134,7 +125,6 @@ buttonEditProfile.addEventListener('click', handleEditProfileButton);
 formEditProfile.addEventListener('submit', handleEditProfileSubmit);
 buttonAddCard.addEventListener('click', handleAddCardButton);
 formAddCard.addEventListener('submit', handleAddCardSubmit);
-document.addEventListener('keydown', handleEscEvent);
 
 // загрузка карточек из массива при старте
 initialCards.forEach(item => addCardAppend(createCard(item)));

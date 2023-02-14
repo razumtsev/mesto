@@ -40,6 +40,7 @@ const setEventListeners = (config, form) => {
     checkInputValidity(config, form, input);
     toggleButtonState(config, inputList, submitButton);
   }));
+
 }
 
 const enableValidation = config => {
