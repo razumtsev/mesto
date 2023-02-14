@@ -36,6 +36,14 @@ const setEventListeners = (config, form) => {
   const inputList = form.querySelectorAll(config.inputSelector);
   const submitButton = form.querySelector(config.submitButtonSelector);
   toggleButtonState(config, inputList, submitButton);
+
+  // слушатель события 'reset' формы, с помощью метода setTimeout запускающий переключатель состояния кнопки сабмита
+  form.addEventListener('reset', () => {
+    setTimeout(() => {
+      toggleButtonState(config, inputList, submitButton);
+    }, 0);
+  });
+
   inputList.forEach(input => input.addEventListener('input', () => {
     checkInputValidity(config, form, input);
     toggleButtonState(config, inputList, submitButton);
