@@ -65,14 +65,15 @@ const openPopup = popup => {
 
 const handleLikeClick = evt => evt.target.classList.toggle('card__like_is-active');
 const handleRemoveClick = evt => evt.target.closest('.card').remove();
-const handleImageClick = evt => {
-  const imageName = evt.target.alt;
-  const imageSrc = evt.target.src;
+
+const handleImageClick = item => {
+  const imageName = item.name;
+  const imageSrc = item.link;
   bigPicImage.src = imageSrc;
   bigPicImage.alt = imageName;
   bigPicCaption.textContent = imageName;
   openPopup(popupBigPic);
-};
+}
 
 // создание карточки
 const createCard = item => {
@@ -80,13 +81,13 @@ const createCard = item => {
   const image = card.querySelector('.card__image');
   const name = card.querySelector('.card__caption');
   const like = card.querySelector('.card__like');
-  const removeButton = card.querySelector('.card__remove');
+  const buttonRemoveCard = card.querySelector('.card__remove');
   image.src = item.link;
   image.alt = item.name;
   name.textContent = item.name;
-  image.addEventListener('click', handleImageClick);
+  image.addEventListener('click', () => handleImageClick(item))
   like.addEventListener('click', handleLikeClick);
-  removeButton.addEventListener('click', handleRemoveClick);
+  buttonRemoveCard.addEventListener('click', handleRemoveClick);
   return card;
 }
 
