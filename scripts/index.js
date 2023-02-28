@@ -1,5 +1,6 @@
-import { Card } from './Card.js'
+import { Card } from './Card.js';
 import { initialCards } from './initial-cards.js';
+import { FormValidator } from './FormValidator.js';
 
 // глобальные переменные глобального масштаба
 const page = document.querySelector('.page');
@@ -22,6 +23,8 @@ const inputCardLink = formAddCard.querySelector('.form__input_type_card-link')
 const buttonClosePopupList = page.querySelectorAll('.button_type_close');
 // глобальная переменная - место для монтажа карточек
 const elementsGrid = page.querySelector('.elements__grid');
+// глобальная переменная - список форм
+const formsList = page.querySelectorAll('.form');
 
 // -= Добавление карточки на страницу =-
 
@@ -94,9 +97,29 @@ formEditProfile.addEventListener('submit', handleEditProfileSubmit);
 buttonAddCard.addEventListener('click', handleAddCardButton);
 formAddCard.addEventListener('submit', handleAddCardSubmit);
 
+// обход массива initialCards для первоначальной загрузки страницы
+
 initialCards.forEach(dataObject => {
   const card = new Card(dataObject, '#card-template');
   addCardAppend(card.createCard());
 });
+
+// объект настроек для валидации форм данной страницы в FormValidator.js
+
+const configValidation = {
+  formSelector: '.form',
+  inputSelector: '.form__input',
+  submitButtonSelector: '.form__submit-button',
+  inactiveButtonClass: 'form__submit-button_is-inactive',
+  inputErrorClass: 'form__input_type_error',
+  errorClass: 'form__input-error_is-active',
+}
+
+// обход коллекции formsList с внедрением валидации FormValidator.js в каждую форму
+
+formsList.forEach(item => {
+  const form = new FormValidator(configValidation, item);
+  form.enableValidation();
+})
 
 export { openPopup }
