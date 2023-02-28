@@ -1,3 +1,6 @@
+import { Card } from './Card.js'
+import { initialCards } from './initial-cards.js';
+
 // глобальные переменные глобального масштаба
 const page = document.querySelector('.page');
 const profile = page.querySelector('.profile');
@@ -14,17 +17,11 @@ const buttonAddCard = profile.querySelector('.button_type_add-card');
 const popupAddCard = page.querySelector('.popup_type_add-card');
 const formAddCard = page.querySelector('.form_type_add-card');
 const inputCardName = formAddCard.querySelector('.form__input_type_card-name');
-const inputCardLink = formAddCard.querySelector('.form__input_type_card-link');
-// глобальные переменные для модального окна увеличенной картинки
-const popupBigPic = page.querySelector('.popup_type_big-pic');
-const bigPicImage = popupBigPic.querySelector('.big-pic__image');
-const bigPicCaption = popupBigPic.querySelector('.big-pic__caption');
-// глобальные переменные для закрытия модальных окон
+const inputCardLink = formAddCard.querySelector('.form__input_type_card-link')
+// глобальная переменная - список кнопок закрытия модальных окон
 const buttonClosePopupList = page.querySelectorAll('.button_type_close');
-// глобальные переменные темплейта карточки
+// глобальная переменная - место для монтажа карточек
 const elementsGrid = page.querySelector('.elements__grid');
-const cardSample = page.querySelector('#card-template').content.querySelector('.card');
-
 
 // -= Добавление карточки на страницу =-
 
@@ -55,41 +52,10 @@ const handleEscEvent = evt => {
 
 // открытие модальных окон
 const openPopup = popup => {
-  //enableValidation(configValidation);
   popup.addEventListener('mousedown', handleOverlayClick);
   document.addEventListener('keydown', handleEscEvent);
   popup.classList.add('popup_is-open');
 };
-
-// -= Обработчики кликов карточки =-
-
-const handleLikeClick = evt => evt.target.classList.toggle('card__like_is-active');
-const handleRemoveClick = evt => evt.target.closest('.card').remove();
-
-const handleImageClick = item => {
-  const imageName = item.name;
-  const imageSrc = item.link;
-  bigPicImage.src = imageSrc;
-  bigPicImage.alt = imageName;
-  bigPicCaption.textContent = imageName;
-  openPopup(popupBigPic);
-}
-
-// создание карточки
-const createCard = item => {
-  const card = cardSample.cloneNode(true);
-  const image = card.querySelector('.card__image');
-  const name = card.querySelector('.card__caption');
-  const like = card.querySelector('.card__like');
-  const buttonRemoveCard = card.querySelector('.card__remove');
-  image.src = item.link;
-  image.alt = item.name;
-  name.textContent = item.name;
-  image.addEventListener('click', () => handleImageClick(item))
-  like.addEventListener('click', handleLikeClick);
-  buttonRemoveCard.addEventListener('click', handleRemoveClick);
-  return card;
-}
 
 // -= Обработчики событий =-
 
@@ -111,11 +77,12 @@ const handleAddCardButton = () => {
 }
 
 const handleAddCardSubmit = () => {
-  const cardEssence = {
+  const dataObject = {
     name: inputCardName.value,
     link: inputCardLink.value,
   };
-  addCardPrepend(createCard(cardEssence));
+  const card = new Card(dataObject, '#card-template');
+  addCardPrepend(card.createCard());
   closePopup(popupAddCard);
   formAddCard.reset();
 }
@@ -127,5 +94,9 @@ formEditProfile.addEventListener('submit', handleEditProfileSubmit);
 buttonAddCard.addEventListener('click', handleAddCardButton);
 formAddCard.addEventListener('submit', handleAddCardSubmit);
 
-// загрузка карточек из массива при старте
-initialCards.forEach(item => addCardAppend(createCard(item)));
+initialCards.forEach(dataObject => {
+  const card = new Card(dataObject, '#card-template');
+  addCardAppend(card.createCard());
+});
+
+export { openPopup }
