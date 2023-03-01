@@ -19,34 +19,52 @@ const popupAddCard = page.querySelector('.popup_type_add-card');
 const formAddCard = page.querySelector('.form_type_add-card');
 const inputCardName = formAddCard.querySelector('.form__input_type_card-name');
 const inputCardLink = formAddCard.querySelector('.form__input_type_card-link')
-// глобальная переменная - список кнопок закрытия модальных окон
-const buttonClosePopupList = page.querySelectorAll('.button_type_close');
+// глобальные переменные для модального окна увеличенного изображения
+const popupBigPic = page.querySelector('.popup_type_big-pic');
+const bigPicImage = popupBigPic.querySelector('.big-pic__image');
+const bigPicCaption = popupBigPic.querySelector('.big-pic__caption');
 // глобальная переменная - место для монтажа карточек
 const elementsGrid = page.querySelector('.elements__grid');
 // глобальная переменная - список форм
 const formsList = page.querySelectorAll('.form');
+// глобальная переменная - список попапов
+const popupList = page.querySelectorAll('.popup');
 
 // -= Добавление карточки на страницу =-
 
 const addCardPrepend = card => elementsGrid.prepend(card);
 const addCardAppend = card => elementsGrid.append(card);
 
+// создание новой карточки
+
+const configCard = {
+  cardSelector: '.card',
+  imageSelector: '.card__image',
+  captionSelector: '.card__caption',
+  likeSelector: '.card__like',
+  removeSelector: '.card__remove',
+  activeLikeClass: 'card__like_is-active',
+}
+
+const makeNewCard = (dataObject, configCard, cardTemplate, handleImageClick) => {
+  const cardElement = new Card(dataObject, configCard, cardTemplate, handleImageClick);
+  return cardElement.createCard();
+}
+
 // закрытие модальных окон
 const closePopup = popup => {
   popup.classList.remove('popup_is-open');
-  popup.removeEventListener('mousedown', handleOverlayClick);
   document.removeEventListener('keydown', handleEscEvent);
 }
 
-// обработчик клика по кнопке закрытия
-buttonClosePopupList.forEach(button => {
-  button.addEventListener('click', () => closePopup(button.closest('.popup')));
-});
+// обработчик кликов по оверлею и по кнопке закрытия попапа
 
-// обработчик клика по оверлею модального окна
-const handleOverlayClick = evt => {
-  if (evt.target.classList.contains('popup')) closePopup(evt.target);
-}
+popupList.forEach(popup => {
+  popup.addEventListener('mousedown', evt => {
+    const targetClassList = evt.target.classList;
+    if(targetClassList.contains('popup') || targetClassList.contains('button_type_close')) closePopup(popup);
+  })
+});
 
 // обработчик клика по клавише 'Escape'
 const handleEscEvent = evt => {
@@ -55,7 +73,6 @@ const handleEscEvent = evt => {
 
 // открытие модальных окон
 const openPopup = popup => {
-  popup.addEventListener('mousedown', handleOverlayClick);
   document.addEventListener('keydown', handleEscEvent);
   popup.classList.add('popup_is-open');
 };
@@ -75,19 +92,24 @@ const handleEditProfileSubmit = () => {
   formEditProfile.reset();
 }
 
-const handleAddCardButton = () => {
-  openPopup(popupAddCard)
-}
+const handleAddCardButton = () => openPopup(popupAddCard);
 
 const handleAddCardSubmit = () => {
   const dataObject = {
     name: inputCardName.value,
     link: inputCardLink.value,
   };
-  const card = new Card(dataObject, '#card-template');
-  addCardPrepend(card.createCard());
+  addCardPrepend(makeNewCard(dataObject, configCard, '#card-template', handleImageClick));
   closePopup(popupAddCard);
   formAddCard.reset();
+}
+
+const handleImageClick = (image, caption) => {
+  bigPicImage.src = image;
+  bigPicImage.alt = caption;
+  bigPicCaption.textContent = caption;
+
+  openPopup(popupBigPic);
 }
 
 // -= Слушатели событий =-
@@ -100,8 +122,7 @@ formAddCard.addEventListener('submit', handleAddCardSubmit);
 // обход массива initialCards для первоначальной загрузки страницы
 
 initialCards.forEach(dataObject => {
-  const card = new Card(dataObject, '#card-template');
-  addCardAppend(card.createCard());
+  addCardAppend(makeNewCard(dataObject, configCard, '#card-template', handleImageClick));
 });
 
 // объект настроек для валидации форм данной страницы в FormValidator.js
@@ -121,5 +142,3 @@ formsList.forEach(item => {
   const form = new FormValidator(configValidation, item);
   form.enableValidation();
 })
-
-export { openPopup }
