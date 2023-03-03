@@ -8,6 +8,7 @@ class FormValidator {
     this._errorClass = config.errorClass;
     this._form = form;
     this._submitButton = this._form.querySelector(this._submitButtonSelector);
+    this._inputList = this._form.querySelectorAll(this._inputSelector);
   }
 
   _hasInvalidInput = inputList => {
@@ -49,15 +50,18 @@ class FormValidator {
   }
 
   _setEventListeners = () => {
-    const inputList = this._form.querySelectorAll(this._inputSelector);
-    this._toggleButtonState(inputList);
+    this._toggleButtonState(this._inputList);
 
     this._form.addEventListener('reset', () => this._disableSubmitButton());
 
-    inputList.forEach(inputElement => inputElement.addEventListener('input', () => {
+    this._inputList.forEach(inputElement => inputElement.addEventListener('input', () => {
       this._checkInputValidity(inputElement);
-      this._toggleButtonState(inputList);
+      this._toggleButtonState(this._inputList);
     }))
+  }
+
+  resetFormErrors = () => {
+    this._inputList.forEach(inputElement => this._hideInputError(inputElement));
   }
 
   enableValidation = () => {

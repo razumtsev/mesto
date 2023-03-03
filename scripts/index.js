@@ -27,16 +27,11 @@ const bigPicCaption = popupBigPic.querySelector('.big-pic__caption');
 const elementsGrid = page.querySelector('.elements__grid');
 // глобальная переменная - список форм
 const formsList = page.querySelectorAll('.form');
+// глобальная переменная - форма редактирования профиля
+const formEditProifle = page.querySelector('.form_type_edit-profile');
 // глобальная переменная - список попапов
 const popupList = page.querySelectorAll('.popup');
-
-// -= Добавление карточки на страницу =-
-
-const addCardPrepend = card => elementsGrid.prepend(card);
-const addCardAppend = card => elementsGrid.append(card);
-
-// создание новой карточки
-
+// конфиг для класса Card
 const configCard = {
   cardSelector: '.card',
   imageSelector: '.card__image',
@@ -45,6 +40,22 @@ const configCard = {
   removeSelector: '.card__remove',
   activeLikeClass: 'card__like_is-active',
 }
+// конфиг для класса FormValidator
+const configValidation = {
+  formSelector: '.form',
+  inputSelector: '.form__input',
+  submitButtonSelector: '.form__submit-button',
+  inactiveButtonClass: 'form__submit-button_is-inactive',
+  inputErrorClass: 'form__input_type_error',
+  errorClass: 'form__input-error_is-active',
+}
+
+// -= Добавление карточки на страницу =-
+
+const addCardPrepend = card => elementsGrid.prepend(card);
+const addCardAppend = card => elementsGrid.append(card);
+
+// создание новой карточки
 
 const makeNewCard = (dataObject, configCard, cardTemplate, handleImageClick) => {
   const cardElement = new Card(dataObject, configCard, cardTemplate, handleImageClick);
@@ -80,6 +91,8 @@ const openPopup = popup => {
 // -= Обработчики событий =-
 
 const handleEditProfileButton = () => {
+  const form = new FormValidator(configValidation, formEditProifle);
+  form.resetFormErrors();
   inputName.value = profileName.textContent;
   inputDescription.value = profileDescription.textContent;
   openPopup(popupEditProfile);
@@ -124,17 +137,6 @@ formAddCard.addEventListener('submit', handleAddCardSubmit);
 initialCards.forEach(dataObject => {
   addCardAppend(makeNewCard(dataObject, configCard, '#card-template', handleImageClick));
 });
-
-// объект настроек для валидации форм данной страницы в FormValidator.js
-
-const configValidation = {
-  formSelector: '.form',
-  inputSelector: '.form__input',
-  submitButtonSelector: '.form__submit-button',
-  inactiveButtonClass: 'form__submit-button_is-inactive',
-  inputErrorClass: 'form__input_type_error',
-  errorClass: 'form__input-error_is-active',
-}
 
 // обход коллекции formsList с внедрением валидации FormValidator.js в каждую форму
 
