@@ -1,4 +1,4 @@
-class Card {
+export class Card {
   constructor(data, configCard, cardTemplate, handleImageClick) {
     this._image = data.link;
     this._caption = data.name;
@@ -47,5 +47,3 @@ class Card {
     return this._card;
   }
 }
-
-export { Card }

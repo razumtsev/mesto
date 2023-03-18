@@ -1,54 +1,31 @@
-import { Card } from './Card.js';
-import { initialCards } from './initial-cards.js';
-import { FormValidator } from './FormValidator.js';
+import { Card } from '../components/Card.js';
+import { initialCards } from '../utils/initial-cards.js';
+import { FormValidator } from '../components/FormValidator.js';
 
-// глобальные переменные глобального масштаба
-const page = document.querySelector('.page');
-const profile = page.querySelector('.profile');
-const profileName = profile.querySelector('.profile__name');
-const profileDescription = profile.querySelector('.profile__description');
-// глобальные переменные для модального окна редактирования профиля
-const buttonEditProfile = profile.querySelector('.button_type_edit-profile');
-const popupEditProfile = page.querySelector('.popup_type_edit-profile');
-const formEditProfile = page.querySelector('.form_type_edit-profile');
-const inputName = formEditProfile.querySelector('.form__input_type_name');
-const inputDescription = formEditProfile.querySelector('.form__input_type_description');
-// глобальные переменные для модального окна добавления карточки
-const buttonAddCard = profile.querySelector('.button_type_add-card');
-const popupAddCard = page.querySelector('.popup_type_add-card');
-const formAddCard = page.querySelector('.form_type_add-card');
-const inputCardName = formAddCard.querySelector('.form__input_type_card-name');
-const inputCardLink = formAddCard.querySelector('.form__input_type_card-link')
-// глобальные переменные для модального окна увеличенного изображения
-const popupBigPic = page.querySelector('.popup_type_big-pic');
-const bigPicImage = popupBigPic.querySelector('.big-pic__image');
-const bigPicCaption = popupBigPic.querySelector('.big-pic__caption');
-// глобальная переменная - место для монтажа карточек
-const elementsGrid = page.querySelector('.elements__grid');
-// глобальная переменная - список форм
-const formsList = page.querySelectorAll('.form');
-// глобальная переменная - форма редактирования профиля
-const formEditProifle = page.querySelector('.form_type_edit-profile');
-// глобальная переменная - список попапов
-const popupList = page.querySelectorAll('.popup');
-// конфиг для класса Card
-const configCard = {
-  cardSelector: '.card',
-  imageSelector: '.card__image',
-  captionSelector: '.card__caption',
-  likeSelector: '.card__like',
-  removeSelector: '.card__remove',
-  activeLikeClass: 'card__like_is-active',
-}
-// конфиг для класса FormValidator
-const configValidation = {
-  formSelector: '.form',
-  inputSelector: '.form__input',
-  submitButtonSelector: '.form__submit-button',
-  inactiveButtonClass: 'form__submit-button_is-inactive',
-  inputErrorClass: 'form__input_type_error',
-  errorClass: 'form__input-error_is-active',
-}
+import {
+  page,
+  profileName,
+  profileDescription,
+  buttonEditProfile,
+  popupEditProfile,
+  formEditProfile,
+  inputName,
+  inputDescription,
+  buttonAddCard,
+  popupAddCard,
+  formAddCard,
+  inputCardName,
+  inputCardLink,
+  popupBigPic,
+  bigPicImage,
+  bigPicCaption,
+  elementsGrid,
+  formsList,
+  formEditProifle,
+  popupList,
+  configCard,
+  configValidation,
+} from '../utils/constants.js';
 
 // -= Добавление карточки на страницу =-
 
