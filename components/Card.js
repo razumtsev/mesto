@@ -1,4 +1,4 @@
-export class Card {
+export default class Card {
   constructor(data, configCard, cardTemplate, handleImageClick) {
     this._image = data.link;
     this._caption = data.name;
@@ -15,7 +15,8 @@ export class Card {
   _getTemplate() {
     return document
     .querySelector(this._cardTemplate)
-    .content.querySelector(this._cardSelector)
+    .content
+    .querySelector(this._cardSelector)
     .cloneNode(true);
   }
 
