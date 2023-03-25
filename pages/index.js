@@ -45,15 +45,17 @@ addCardPopup.setEventListeners();
 
 /* -= Обработчики событий =- */
 
-const handleEditProfileButton = () => {
+const handleEditProfileButtonClick = () => {
   const newUserInfo = new UserInfo({
     name: profileName.textContent,
     description: profileDescription.textContent,
   });
   newUserInfo.getUserInfo();
+  const editProfileForm = new FormValidator(configValidation, document.forms['edit-profile']);
+  editProfileForm.resetFormErrors();
   editProfilePopup.open();
 }
-const handleAddCardButton = () => addCardPopup.open();
+const handleAddCardButtonClick = () => addCardPopup.open();
 
 const handleImageClick = (image, caption) => {
   const bigPic = new PopupWithImage({image, caption}, '.popup_type_big-pic');
@@ -63,15 +65,15 @@ const handleImageClick = (image, caption) => {
 
 /* -= Слушатели событий =- */
 
-buttonEditProfile.addEventListener('click', handleEditProfileButton);
-buttonAddCard.addEventListener('click', handleAddCardButton);
+buttonEditProfile.addEventListener('click', handleEditProfileButtonClick);
+buttonAddCard.addEventListener('click', handleAddCardButtonClick);
 
 /* -= Подключение валидатора форм =- */
 
 formsList.forEach(item => {
   const form = new FormValidator(configValidation, item);
   form.enableValidation();
-})
+});
 
 /* -= Первичное заполнение страницы карточками =- */
 
