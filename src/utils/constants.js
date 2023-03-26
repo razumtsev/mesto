@@ -23,10 +23,12 @@ export const bigPicCaption = popupBigPic.querySelector('.big-pic__caption');
 export const elementsGrid = page.querySelector('.elements__grid');
 // глобальная переменная - список форм
 export const formsList = page.querySelectorAll('.form');
-// глобальная переменная - форма редактирования профиля
-export const formEditProifle = page.querySelector('.form_type_edit-profile');
 // глобальная переменная - список попапов
 export const popupList = page.querySelectorAll('.popup');
+// форма редактирования профиля
+export const profileEditForm = document.forms['edit-profile'];
+// форма добавления карточки
+export const cardAddForm = document.forms['add-card'];
 
 // конфиг для класса Card
 export const configCard = {

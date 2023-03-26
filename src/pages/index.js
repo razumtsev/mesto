@@ -11,6 +11,7 @@ import {
   formsList,
   configCard,
   configValidation,
+  profileEditForm,
 } from '../utils/constants.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupWithForm from '../components/PopupWithForm.js';
@@ -52,8 +53,8 @@ const handleEditProfileButtonClick = () => {
     description: profileDescription.textContent,
   });
   newUserInfo.getUserInfo();
-  const editProfileForm = new FormValidator(configValidation, document.forms['edit-profile']);
-  editProfileForm.resetFormErrors();
+  const form = new FormValidator(configValidation, profileEditForm);
+  form.resetFormErrors();
   editProfilePopup.open();
 }
 const handleAddCardButtonClick = () => addCardPopup.open();

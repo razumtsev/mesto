@@ -8,8 +8,6 @@ export default class UserInfo {
   constructor({ name, description }) {
     this._profileName = name;
     this._profileDescription = description;
-    this._markupProfileName = profileName;
-    this._markupProfileDescription = profileDescription;
   }
 
   getUserInfo() {
@@ -18,7 +16,7 @@ export default class UserInfo {
   }
 
   setUserInfo() {
-    this._markupProfileName.textContent = this._profileName;
-    this._markupProfileDescription.textContent = this._profileDescription;
+    profileName.textContent = this._profileName;
+    profileDescription.textContent = this._profileDescription;
   }
 }

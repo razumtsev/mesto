@@ -9,7 +9,15 @@ export default class PopupWithImage extends Popup {
 
   open() {
     bigPicImage.src = this._image;
+    bigPicImage.alt = this._caption;
     bigPicCaption.textContent = this._caption;
     super.open();
+  }
+
+  close() {
+    super.close();
+    bigPicImage.src = '#';
+    bigPicImage.alt = '';
+    bigPicCaption.textContent = '';
   }
 }
