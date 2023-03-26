@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Илья Разумцев">
     <title>Место Россия</title>
-    <link rel="stylesheet" href="./pages/index.css">
-    <script type="module" src="./pages/index.js"></script>
+    <!--<link rel="stylesheet" href="./pages/index.css">
+    <script type="module" src="./pages/index.js"></script>-->
   </head>
 
   <body class="root">
@@ -14,13 +14,13 @@
     <div class="page">
 
       <header class="header">
-        <img class="header__logo" src="./images/mesto-russia.svg" alt="логотип сайта Место Россия">
+        <img class="header__logo" src="<%=require('./images/mesto-russia.svg')%>" alt="логотип сайта Место Россия">
       </header>
 
       <main class="content">
 
         <section class="profile">
-          <img class="profile__avatar" src="./images/profile-avatar.jpg" alt="Жак-Ив Кусто">
+          <img class="profile__avatar" src="<%=require('./images/profile-avatar.jpg')%>" alt="Жак-Ив Кусто">
           <div class="profile__info">
             <h1 class="profile__name overflow-ellipsis">Жак-Ив Кусто</h1>
             <button class="button button_type_edit-profile" type="button" aria-label="редактировать профиль"></button>
