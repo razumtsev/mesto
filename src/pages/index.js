@@ -59,10 +59,10 @@ const handleEditProfileButtonClick = () => {
 }
 const handleAddCardButtonClick = () => addCardPopup.open();
 
-const handleImageClick = (image, caption) => {
-  const bigPic = new PopupWithImage({image, caption}, '.popup_type_big-pic');
+const handleImageClick = data => {
+  const bigPic = new PopupWithImage('.popup_type_big-pic');
   bigPic.setEventListeners();
-  bigPic.open();
+  bigPic.open(data);
 }
 
 /* -= Слушатели событий =- */

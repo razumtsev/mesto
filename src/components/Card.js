@@ -1,5 +1,6 @@
 export default class Card {
   constructor(data, configCard, cardTemplate, handleImageClick) {
+    this._data = data;
     this._image = data.link;
     this._caption = data.name;
     this._cardSelector = configCard.cardSelector;
@@ -21,7 +22,7 @@ export default class Card {
   }
 
   _handleLikeClick() {
-    this._card.querySelector(this._likeSelector).classList.toggle(this._activeLikeClass);
+    this._cardLike.classList.toggle(this._activeLikeClass);
   }
 
   _handleRemoveClick() {
@@ -29,13 +30,16 @@ export default class Card {
   }
 
   _setEventListeners() {
-    this._card.querySelector(this._likeSelector).addEventListener('click', () => this._handleLikeClick());
-    this._card.querySelector(this._removeSelector).addEventListener('click', () => this._handleRemoveClick());
-    this._card.querySelector(this._imageSelector).addEventListener('click', () => this._handleImageClick(this._image, this._caption));
+    this._cardLike.addEventListener('click', () => this._handleLikeClick());
+    this._cardRemove.addEventListener('click', () => this._handleRemoveClick());
+    this._cardImage.addEventListener('click', () => this._handleImageClick(this._data));
   }
 
   createCard() {
     this._card = this._getTemplate();
+    this._cardLike = this._card.querySelector(this._likeSelector);
+    this._cardRemove = this._card.querySelector(this._removeSelector);
+    this._cardImage = this._card.querySelector(this._imageSelector);
     this._setEventListeners();
 
     const image = this._card.querySelector(this._imageSelector);
