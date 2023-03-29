@@ -12,26 +12,34 @@ import {
   configCard,
   configValidation,
   profileEditForm,
+  inputName,
+  inputDescription,
 } from '../utils/constants.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 
+/* -= Экземпляр класса UserInfo =- */
+
+const info = new UserInfo({
+  userName: profileName,
+  userInfo: profileDescription,
+});
+
 /* -= Экземпляры наследников класса Popup =- */
 
-const editProfilePopup = new PopupWithForm({
+const profileEditPopup = new PopupWithForm({
   handleFormSubmit: (obj) => {
-    const newUserInfo = new UserInfo({
+    info.setUserInfo({
       name: obj['profile-name'],
-      description: obj['profile-description'],
+      info: obj['profile-description'],
     });
-    newUserInfo.setUserInfo();
-    editProfilePopup.close();
+    profileEditPopup.close();
   }
 },'.popup_type_edit-profile');
-editProfilePopup.setEventListeners();
+profileEditPopup.setEventListeners();
 
-const addCardPopup = new PopupWithForm({
+const cardAddPopup = new PopupWithForm({
   handleFormSubmit: (obj) => {
     const item = {
       name: obj['card-name'],
@@ -40,24 +48,22 @@ const addCardPopup = new PopupWithForm({
     const card = new Card(item, configCard, '#card-template', handleImageClick);
     const cardElement = card.createCard();
     cardList.addItemsPrepend(cardElement);
-    addCardPopup.close();
+    cardAddPopup.close();
   }
 },'.popup_type_add-card');
-addCardPopup.setEventListeners();
+cardAddPopup.setEventListeners();
 
 /* -= Обработчики событий =- */
 
 const handleEditProfileButtonClick = () => {
-  const newUserInfo = new UserInfo({
-    name: profileName.textContent,
-    description: profileDescription.textContent,
-  });
-  newUserInfo.getUserInfo();
+  const thisUserInfo = info.getUserInfo();
+  inputName.value = thisUserInfo.name;
+  inputDescription.value = thisUserInfo.info;
   const form = new FormValidator(configValidation, profileEditForm);
   form.resetFormErrors();
-  editProfilePopup.open();
+  profileEditPopup.open();
 }
-const handleAddCardButtonClick = () => addCardPopup.open();
+const handleAddCardButtonClick = () => cardAddPopup.open();
 
 const handleImageClick = data => {
   const bigPic = new PopupWithImage('.popup_type_big-pic');
