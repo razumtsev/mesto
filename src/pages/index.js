@@ -59,6 +59,11 @@ const cardAddPopup = new PopupWithForm({
 },'.popup_type_add-card');
 cardAddPopup.setEventListeners();
 
+/* -= Инстанцирование класса PopupWithImage =- */
+
+const bigPicPopup = new PopupWithImage('.popup_type_big-pic');
+bigPicPopup.setEventListeners();
+
 /* -= Обработчики событий =- */
 
 const handleEditProfileButtonClick = () => {
@@ -71,11 +76,7 @@ const handleEditProfileButtonClick = () => {
 }
 const handleAddCardButtonClick = () => cardAddPopup.open();
 
-const handleImageClick = data => {
-  const bigPic = new PopupWithImage('.popup_type_big-pic');
-  bigPic.setEventListeners();
-  bigPic.open(data);
-}
+const handleImageClick = data => bigPicPopup.open(data);
 
 /* -= Слушатели событий =- */
 
