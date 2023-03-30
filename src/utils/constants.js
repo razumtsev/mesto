@@ -25,10 +25,6 @@ export const elementsGrid = page.querySelector('.elements__grid');
 export const formsList = page.querySelectorAll('.form');
 // глобальная переменная - список попапов
 export const popupList = page.querySelectorAll('.popup');
-// форма редактирования профиля
-export const profileEditForm = document.forms['edit-profile'];
-// форма добавления карточки
-export const cardAddForm = document.forms['add-card'];
 
 // конфиг для класса Card
 export const configCard = {

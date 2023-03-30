@@ -19,6 +19,7 @@ module.exports = {
     compress: true,
     port: 8080
   },
+  devtool: 'inline-source-map',
   module: {
     rules: [{
         test: /\.js$/,
