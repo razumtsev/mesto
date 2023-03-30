@@ -19,14 +19,21 @@ import UserInfo from '../components/UserInfo.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 
-/* -= Экземпляр класса UserInfo =- */
+/* -= Инстанцирование класса Card =- */
+
+const makeCard = item => {
+  const card = new Card(item, configCard, '#card-template', handleImageClick);
+  return card.createCard();
+}
+
+/* -= Инстанцирование класса UserInfo =- */
 
 const info = new UserInfo({
   userName: profileName,
   userInfo: profileDescription,
 });
 
-/* -= Экземпляры наследников класса Popup =- */
+/* -= Инстанцирование классов-наследников Popup =- */
 
 const profileEditPopup = new PopupWithForm({
   handleFormSubmit: (obj) => {
@@ -45,8 +52,7 @@ const cardAddPopup = new PopupWithForm({
       name: obj['card-name'],
       link: obj['card-link'],
     };
-    const card = new Card(item, configCard, '#card-template', handleImageClick);
-    const cardElement = card.createCard();
+    const cardElement = makeCard(item);
     cardList.addItemsPrepend(cardElement);
     cardAddPopup.close();
   }
@@ -88,8 +94,7 @@ formsList.forEach(item => {
 const cardList = new Section({
   items: initialCards,
   renderer: (item) => {
-    const card = new Card(item, configCard, '#card-template', handleImageClick);
-    const cardElement = card.createCard();
+    const cardElement = makeCard(item);
     cardList.addItemsAppend(cardElement);
   }
 }, '.elements__grid');
