@@ -3,7 +3,6 @@ import Api from '../components/Api.js';
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
-import { initialCards } from '../utils/initial-cards.js';
 import {
   profileAvatar,
   profileName,
@@ -42,6 +41,7 @@ const makeCard = data => {
     cardTemplate,
     handleImageClick,
     handleRemoveButtonClick,
+    handleLikeClick,
     userID,
   });
   return card.createCard();
@@ -104,6 +104,7 @@ const handleEditProfileButtonClick = () => {
   inputDescription.value = thisUserInfo.info;
   profileEditPopup.open();
 }
+
 const handleAddCardButtonClick = () => cardAddPopup.open();
 
 const handleRemoveButtonClick = card => {
@@ -115,6 +116,26 @@ const handleRemoveButtonClick = card => {
     })
     .catch(err => console.log(err));
   });
+}
+
+const handleLikeClick = likedCard => {
+  const likesArr = likedCard._data.likes;
+  const foundLike = likesArr.some(item => item._id === userID);
+  if(foundLike) {
+    api.removeCardLike(likedCard._data)
+      .then(data => {
+        likedCard.updateLikesCount(data);
+        likedCard.removeLike();
+      })
+      .catch(err => console.log(err))
+  } else {
+    api.setCardLike(likedCard._data)
+      .then(data => {
+        likedCard.updateLikesCount(data);
+        likedCard.setLike();
+      })
+      .catch(err => console.log(err))
+  }
 }
 
 const handleImageClick = data => bigPicPopup.open(data);
@@ -147,4 +168,3 @@ Promise.all([api.getProfileInfo(), api.getInitialCards()])
     renderInitialCards(cards);
   })
   .catch(err => console.log(err));
-

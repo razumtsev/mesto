@@ -1,5 +1,5 @@
 export default class Card {
-  constructor({ data, configCard, cardTemplate, handleImageClick, handleRemoveButtonClick, userID }) {
+  constructor({ data, configCard, cardTemplate, handleImageClick, handleRemoveButtonClick, handleLikeClick, userID }) {
     this._data = data;
     this._userID = userID;
     this._image = data.link;
@@ -15,6 +15,7 @@ export default class Card {
     this._cardTemplate = cardTemplate;
     this._handleImageClick = handleImageClick;
     this._handleRemoveButtonClick = handleRemoveButtonClick;
+    this._handleLikeClick = handleLikeClick;
   }
 
   _getTemplate() {
@@ -25,12 +26,12 @@ export default class Card {
     .cloneNode(true);
   }
 
-  _handleLikeClick() {
+  /*_handleLikeClick() {
     this._cardLike.classList.toggle(this._activeLikeClass);
-  }
+  }*/
 
   _setEventListeners() {
-    this._cardLike.addEventListener('click', () => this._handleLikeClick());
+    this._cardLike.addEventListener('click', () => this._handleLikeClick(this));
     this._cardRemove.addEventListener('click', () => this._handleRemoveButtonClick(this));
     this._cardImage.addEventListener('click', () => this._handleImageClick(this._data));
   }
@@ -41,8 +42,25 @@ export default class Card {
     }
   }
 
+  _getLikesCount() {
+    this._likeCount.textContent = this._data.likes.length;
+  }
+
+  updateLikesCount(data) {
+    this._likeCount.textContent = data.likes.length;
+    this._data.likes = data.likes;
+  }
+
   removeCard() {
     this._card.remove();
+  }
+
+  setLike() {
+    this._card.querySelector(this._likeSelector).classList.add(this._activeLikeClass);
+  }
+
+  removeLike() {
+    this._card.querySelector(this._likeSelector).classList.remove(this._activeLikeClass);
   }
 
   createCard() {
@@ -53,7 +71,11 @@ export default class Card {
     this._likeCount = this._card.querySelector(this._likeCountSelector);
     this._setEventListeners();
     this._hideRemoveButton();
-    console.log(this);
+    this._getLikesCount();
+
+    const likesArray = this._data.likes;
+
+    if(likesArray.length > 0 && likesArray.some(item => item._id === this._userID)) this.setLike();
 
     const image = this._card.querySelector(this._imageSelector);
     const caption = this._card.querySelector(this._captionSelector);
@@ -62,7 +84,6 @@ export default class Card {
     image.alt = this._caption;
     caption.textContent = this._caption;
 
-    this._likeCount.textContent = this._data.likes.length;
 
     return this._card;
   }
