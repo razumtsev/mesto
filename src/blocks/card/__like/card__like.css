@@ -3,8 +3,7 @@
   height: 19px;
   background-size: cover;
   background-image: url(../../../images/vector-heart-white.svg);
-  margin-right: 20px;
-  margin-top: 1px;
+  align-self: flex-end;
 }
 
 .card__like:hover {

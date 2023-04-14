@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Илья Разумцев">
     <title>Место Россия</title>
-    <!--<link rel="stylesheet" href="./pages/index.css">
-    <script type="module" src="./pages/index.js"></script>-->
   </head>
 
   <body class="root">
@@ -41,11 +39,25 @@
         <p class="footer__copyright">© 2022-2023 Mesto Russia</p>
       </footer>
 
+      <!--
       <template id="card-template">
         <li class="card">
           <img class="card__image" src="#" alt="">
           <h2 class="card__caption overflow-ellipsis"></h2>
           <button class="button card__like" type="button" aria-label="поставить или удалить лайк"></button>
+          <button class="button card__remove" type="button" aria-label="удалить карточку"></button>
+        </li>
+      </template>
+      -->
+
+      <template id="card-template">
+        <li class="card">
+          <img class="card__image" src="#" alt="">
+          <h2 class="card__caption overflow-ellipsis"></h2>
+          <div class="card__like-container">
+            <button class="button card__like" type="button" aria-label="поставить или удалить лайк"></button>
+            <p class="card__like-count">0</p>
+          </div>
           <button class="button card__remove" type="button" aria-label="удалить карточку"></button>
         </li>
       </template>
@@ -84,6 +96,16 @@
             <img class="big-pic__image" src="#" alt="">
             <figcaption class="big-pic__caption overflow-ellipsis"></figcaption>
           </figure>
+          <button class="button button_type_close" type="button" aria-label="закрыть модальное окно"></button>
+        </div>
+      </div>
+
+      <div class="popup popup_type_remove-card">
+        <div class="popup__container popup__container_type_form">
+          <form class="form form_type_remove-card" name="remove-card" novalidate>
+            <h2 class="form__title form__title_place_remove-card">Вы уверены?</h2>
+            <button class="button form__submit-button" type="submit">Да</button>
+          </form>
           <button class="button button_type_close" type="button" aria-label="закрыть модальное окно"></button>
         </div>
       </div>

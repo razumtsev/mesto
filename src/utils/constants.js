@@ -1,6 +1,7 @@
 // глобальные переменные глобального масштаба
 export const page = document.querySelector('.page');
 const profile = page.querySelector('.profile');
+export const profileAvatar = profile.querySelector('.profile__avatar');
 export const profileName = profile.querySelector('.profile__name');
 export const profileDescription = profile.querySelector('.profile__description');
 // глобальные переменные для модального окна редактирования профиля
@@ -32,8 +33,10 @@ export const configCard = {
   imageSelector: '.card__image',
   captionSelector: '.card__caption',
   likeSelector: '.card__like',
+  likeCountSelector: '.card__like-count',
   removeSelector: '.card__remove',
   activeLikeClass: 'card__like_is-active',
+  hiddenButtonClass: 'button_is-hidden',
 }
 // конфиг для класса FormValidator
 export const configValidation = {
