@@ -5,6 +5,7 @@ export const profileAvatar = profile.querySelector('.profile__avatar');
 export const profileName = profile.querySelector('.profile__name');
 export const profileDescription = profile.querySelector('.profile__description');
 // глобальные переменные для модального окна редактирования профиля
+export const buttonChangeAvatar = profile.querySelector('.profile__overlay');
 export const buttonEditProfile = profile.querySelector('.button_type_edit-profile');
 export const popupEditProfile = page.querySelector('.popup_type_edit-profile');
 export const formEditProfile = page.querySelector('.form_type_edit-profile');
@@ -26,6 +27,8 @@ export const elementsGrid = page.querySelector('.elements__grid');
 export const formsList = page.querySelectorAll('.form');
 // глобальная переменная - список попапов
 export const popupList = page.querySelectorAll('.popup');
+
+export const cardTemplate = '#card-template';
 
 // конфиг для класса Card
 export const configCard = {

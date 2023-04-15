@@ -5,6 +5,7 @@ import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
 import {
   profileAvatar,
+  buttonChangeAvatar,
   profileName,
   profileDescription,
   buttonEditProfile,
@@ -14,13 +15,13 @@ import {
   configValidation,
   inputName,
   inputDescription,
+  cardTemplate,
 } from '../utils/constants.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithConfirm from '../components/PopupWithConfirm';
 
-const cardTemplate = '#card-template';
 let cardList = null;
 let userID = null;
 
@@ -61,7 +62,8 @@ const profileEditPopup = new PopupWithForm({
     })
     .then(profileInfo => {
       userInfo.setUserInfo(profileInfo);
-    });
+    })
+    .catch(err => console.log(err));
     profileEditPopup.close();
   }
 }, '.popup_type_edit-profile');
@@ -77,11 +79,26 @@ const cardAddPopup = new PopupWithForm({
       .then(data => {
         const cardElement = makeCard(data);
         cardList.addItemsPrepend(cardElement);
-      });
+      })
+      .catch(err => console.log(err));
     cardAddPopup.close();
   }
 }, '.popup_type_add-card');
 cardAddPopup.setEventListeners();
+
+const avatarChangePopup = new PopupWithForm({
+  handleFormSubmit: (obj) => {
+    api.setNewAvatar({
+      avatar: obj['avatar-link']
+    })
+      .then(data => {
+        userInfo.setUserAvatar(data);
+      })
+      .catch(err => console.log(err));
+    avatarChangePopup.close();
+  }
+}, '.popup_type_change-avatar');
+avatarChangePopup.setEventListeners();
 
 const removeCardConfirm = new PopupWithConfirm('.popup_type_remove-card');
 removeCardConfirm.setEventListeners();
@@ -97,6 +114,8 @@ formsList.forEach(item => {
 });
 
 /* -= Обработчики событий =- */
+
+const handleChangeAvatarButtonClick = () => avatarChangePopup.open();
 
 const handleEditProfileButtonClick = () => {
   const thisUserInfo = userInfo.getUserInfo();
@@ -142,6 +161,7 @@ const handleImageClick = data => bigPicPopup.open(data);
 
 /* -= Слушатели событий =- */
 
+buttonChangeAvatar.addEventListener('click', handleChangeAvatarButtonClick);
 buttonEditProfile.addEventListener('click', handleEditProfileButtonClick);
 buttonAddCard.addEventListener('click', handleAddCardButtonClick);
 

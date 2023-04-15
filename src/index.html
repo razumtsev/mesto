@@ -18,7 +18,10 @@
       <main class="content">
 
         <section class="profile">
-          <img class="profile__avatar" src="<%=require('./images/profile-avatar.jpg')%>" alt="Жак-Ив Кусто">
+          <div class="profile__avatar-container">
+            <img class="profile__avatar" src="<%=require('./images/profile-avatar.jpg')%>" alt="Жак-Ив Кусто">
+            <button class="profile__overlay" type="button" aria-label="редактировать аватар"></button>
+          </div>
           <div class="profile__info">
             <h1 class="profile__name overflow-ellipsis">Жак-Ив Кусто</h1>
             <button class="button button_type_edit-profile" type="button" aria-label="редактировать профиль"></button>
@@ -38,17 +41,6 @@
       <footer class="footer">
         <p class="footer__copyright">© 2022-2023 Mesto Russia</p>
       </footer>
-
-      <!--
-      <template id="card-template">
-        <li class="card">
-          <img class="card__image" src="#" alt="">
-          <h2 class="card__caption overflow-ellipsis"></h2>
-          <button class="button card__like" type="button" aria-label="поставить или удалить лайк"></button>
-          <button class="button card__remove" type="button" aria-label="удалить карточку"></button>
-        </li>
-      </template>
-      -->
 
       <template id="card-template">
         <li class="card">
@@ -85,6 +77,18 @@
             <input class="form__input form__input_type_card-link" type="url" name="card-link" id="card-link" minlength="2" placeholder="Ссылка на картинку" required>
             <span class="form__input-error card-link-error"></span>
             <button class="button form__submit-button" type="submit">Создать</button>
+          </form>
+          <button class="button button_type_close" type="button" aria-label="закрыть модальное окно"></button>
+        </div>
+      </div>
+
+      <div class="popup popup_type_change-avatar">
+        <div class="popup__container popup__container_type_form">
+          <form class="form form_type_change-avatar" name="change-avatar" novalidate>
+            <h2 class="form__title">Обновить аватар</h2>
+            <input class="form__input form__input_type_avatar-link" type="url" name="avatar-link" id="avatar-link" minlength="2" placeholder="Ссылка на аватар" required>
+            <span class="form__input-error avatar-link-error"></span>
+            <button class="button form__submit-button" type="submit">Сохранить</button>
           </form>
           <button class="button button_type_close" type="button" aria-label="закрыть модальное окно"></button>
         </div>

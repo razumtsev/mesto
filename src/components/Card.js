@@ -26,10 +26,6 @@ export default class Card {
     .cloneNode(true);
   }
 
-  /*_handleLikeClick() {
-    this._cardLike.classList.toggle(this._activeLikeClass);
-  }*/
-
   _setEventListeners() {
     this._cardLike.addEventListener('click', () => this._handleLikeClick(this));
     this._cardRemove.addEventListener('click', () => this._handleRemoveButtonClick(this));
