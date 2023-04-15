@@ -47,6 +47,10 @@ export default class Card {
     this._data.likes = data.likes;
   }
 
+  getLikesArray() {
+    return this._data.likes;
+  }
+
   removeCard() {
     this._card.remove();
   }
