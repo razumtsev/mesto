@@ -1,8 +1,4 @@
 import './index.css';
-import Api from '../components/Api.js';
-import Card from '../components/Card.js';
-import FormValidator from '../components/FormValidator.js';
-import Section from '../components/Section.js';
 import {
   profileAvatar,
   buttonChangeAvatar,
@@ -17,6 +13,10 @@ import {
   inputDescription,
   cardTemplate,
 } from '../utils/constants.js';
+import Api from '../components/Api.js';
+import Card from '../components/Card.js';
+import FormValidator from '../components/FormValidator.js';
+import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
@@ -56,6 +56,7 @@ const userInfo = new UserInfo({
 
 const profileEditPopup = new PopupWithForm({
   handleFormSubmit: (obj) => {
+    profileEditPopup.renderLoadnig('Сохранение...');
     api.setProfileInfo({
       name: obj['profile-name'],
       about: obj['profile-description'],
@@ -63,14 +64,18 @@ const profileEditPopup = new PopupWithForm({
     .then(profileInfo => {
       userInfo.setUserInfo(profileInfo);
     })
-    .catch(err => console.log(err));
-    profileEditPopup.close();
+    .catch(err => console.log(err))
+    .finally(() => {
+      profileEditPopup.renderLoadnig('Сохранить');
+      profileEditPopup.close();
+    });
   }
 }, '.popup_type_edit-profile');
 profileEditPopup.setEventListeners();
 
 const cardAddPopup = new PopupWithForm({
   handleFormSubmit: (obj) => {
+    cardAddPopup.renderLoadnig('Создание...');
     const item = {
       name: obj['card-name'],
       link: obj['card-link'],
@@ -80,22 +85,29 @@ const cardAddPopup = new PopupWithForm({
         const cardElement = makeCard(data);
         cardList.addItemsPrepend(cardElement);
       })
-      .catch(err => console.log(err));
-    cardAddPopup.close();
+      .catch(err => console.log(err))
+      .finally(() => {
+        profileEditPopup.renderLoadnig('Создать');
+        cardAddPopup.close();
+      });
   }
 }, '.popup_type_add-card');
 cardAddPopup.setEventListeners();
 
 const avatarChangePopup = new PopupWithForm({
   handleFormSubmit: (obj) => {
+    avatarChangePopup.renderLoadnig('Сохранение...');
     api.setNewAvatar({
       avatar: obj['avatar-link']
     })
       .then(data => {
         userInfo.setUserAvatar(data);
       })
-      .catch(err => console.log(err));
-    avatarChangePopup.close();
+      .catch(err => console.log(err))
+      .finally(() => {
+        avatarChangePopup.renderLoadnig('Сохранить');
+        avatarChangePopup.close();
+      });
   }
 }, '.popup_type_change-avatar');
 avatarChangePopup.setEventListeners();
